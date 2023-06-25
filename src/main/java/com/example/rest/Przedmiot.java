@@ -1,6 +1,7 @@
 package com.example.rest;
 import lombok.Data;
 
+
 @Data
 public class Przedmiot {
 
