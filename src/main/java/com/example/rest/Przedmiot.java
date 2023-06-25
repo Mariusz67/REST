@@ -12,5 +12,5 @@ public class Przedmiot {
 
     private String sala;
 
-    private boolean czyEgzamin;
+    private Boolean czyEgzamin;
 }

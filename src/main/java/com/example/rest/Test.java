@@ -14,13 +14,13 @@ public class Test {
 @Autowired
     private BazaDanychPrzedmiotow bazaDanychPrzedmiotow;
 
-    @GetMapping("test")
-    public String metodaTestowa(){return "sukces";}
+    //@GetMapping("test")
+    //public String metodaTestowa(){return "sukces";}
 
-    @GetMapping(value="przedmioty", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Przedmiot> wczytajWszystkiePrzedmioty(){
-       return bazaDanychPrzedmiotow.getPrzedmioty();
-    }
+//    @GetMapping(value="przedmioty", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public List<Przedmiot> wczytajWszystkiePrzedmioty(){
+//       return bazaDanychPrzedmiotow.getPrzedmioty();
+//    }
 
     @PostMapping(value="przedmioty", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void dodajPrzedmiot(@RequestBody Przedmiot przedmiot){
@@ -30,6 +30,13 @@ public class Test {
     @DeleteMapping(value="przedmioty", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public void deleteActivities(){
         bazaDanychPrzedmiotow.deleteWszystkie();
+    }
+
+    @GetMapping(value="przedmioty", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Przedmiot> wczytajWyfiltrowanePrzedmioty(
+            @Nullable @RequestParam("sala") String sala,
+            @Nullable @RequestParam("czyEgzamin") Boolean czyEgzamin) {
+        return bazaDanychPrzedmiotow.getListaWyfiltrowanaPrzedmiotow(sala,czyEgzamin);
     }
 
 }

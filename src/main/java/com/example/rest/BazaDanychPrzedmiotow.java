@@ -21,4 +21,22 @@ public class BazaDanychPrzedmiotow {
     }
 
     public void deleteWszystkie(){ przedmioty.clear();}
+
+    public List<Przedmiot> getListaWyfiltrowanaPrzedmiotow(String sala, Boolean czyEgzamin ){
+        if (sala==null && czyEgzamin==null){
+            return przedmioty;
+        }
+        List<Przedmiot> wyfiltrowanePrzedmioty = new ArrayList<>();
+        for (Przedmiot p : przedmioty){
+            if((czyEgzamin==null) && p.getSala().equals(sala)){
+                wyfiltrowanePrzedmioty.add(p);
+            }else if (sala==null && p.getCzyEgzamin().equals(czyEgzamin)){
+                wyfiltrowanePrzedmioty.add(p);
+            } else if (p.getSala().equals(sala) && p.getCzyEgzamin().equals(czyEgzamin)) {
+                wyfiltrowanePrzedmioty.add(p);
+            }
+        }
+        return wyfiltrowanePrzedmioty;
+    }
+
 }
