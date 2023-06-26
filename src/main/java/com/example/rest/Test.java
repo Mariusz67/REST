@@ -39,7 +39,7 @@ public class Test {
     }
 
     @GetMapping(value = "przedmioty/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getActivityById(@PathVariable("id") Integer id){
+    public ResponseEntity getPrzedmiotyById(@PathVariable("id") Integer id){
         Przedmiot przedmiot = bazaDanychPrzedmiotow.getPrzedmiotWgId(id);
         if (przedmiot == null){
             return ResponseEntity.notFound().build();
@@ -48,7 +48,7 @@ public class Test {
     }
 
     @DeleteMapping(value="przedmioty/{id}")
-    public ResponseEntity deleteActivitiesById(@PathVariable("id") Integer id){
+    public ResponseEntity deletePrzedmiotyById(@PathVariable("id") Integer id){
         if (bazaDanychPrzedmiotow.deletePrzedmiotWgId(id)  ){
             return ResponseEntity.noContent().build();
         }
