@@ -47,7 +47,6 @@ public class Test {
         }
         return ResponseEntity.ok(przedmiot);
     }
-
     @DeleteMapping(value="przedmioty/{id}")
     public ResponseEntity deleteActivitiesById(@PathVariable("id") Integer id){
         if (bazaDanychPrzedmiotow.deletePrzedmiotWgId(id)  ){
