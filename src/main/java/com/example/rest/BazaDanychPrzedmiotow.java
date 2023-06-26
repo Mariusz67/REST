@@ -16,11 +16,9 @@ public class BazaDanychPrzedmiotow {
         return przedmioty;
     }
 
-    public void addPrzedmiot (Przedmiot przedmiot) {
-        przedmioty.add(przedmiot);
-    }
+    public void addPrzedmiot (Przedmiot przedmiot) { przedmioty.add(przedmiot); }
 
-    public void deleteWszystkie(){ przedmioty.clear();}
+    public void deleteWszystkie(){ przedmioty.clear(); }
 
     public List<Przedmiot> getListaWyfiltrowanaPrzedmiotow(String sala, Boolean czyEgzamin ){
         if (sala==null && czyEgzamin==null){
@@ -37,6 +35,29 @@ public class BazaDanychPrzedmiotow {
             }
         }
         return wyfiltrowanePrzedmioty;
+    }
+
+    public Przedmiot getPrzedmiotWgId(int id) {
+        for(Przedmiot p: przedmioty){
+            if (p.getId() == id){
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public boolean deletePrzedmiotWgId(int id){
+        Przedmiot przedmiotDoUsuniecia = null;
+        for (Przedmiot p : przedmioty){
+            if(p.getId() == id){
+                przedmiotDoUsuniecia = p;
+            }
+        }
+        if (przedmiotDoUsuniecia == null){
+            return false;
+        }
+        przedmioty.remove(przedmiotDoUsuniecia);
+        return true;
     }
 
 }

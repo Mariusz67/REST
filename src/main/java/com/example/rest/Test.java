@@ -1,8 +1,8 @@
 package com.example.rest;
 
-import com.example.rest.BazaDanychPrzedmiotow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,4 +39,20 @@ public class Test {
         return bazaDanychPrzedmiotow.getListaWyfiltrowanaPrzedmiotow(sala,czyEgzamin);
     }
 
+    @GetMapping(value = "przedmioty/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getActivityById(@PathVariable("id") Integer id){
+        Przedmiot przedmiot = bazaDanychPrzedmiotow.getPrzedmiotWgId(id);
+        if (przedmiot == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(przedmiot);
+    }
+
+    @DeleteMapping(value="przedmioty/{id}")
+    public ResponseEntity deleteActivitiesById(@PathVariable("id") Integer id){
+        if (bazaDanychPrzedmiotow.deletePrzedmiotWgId(id)  ){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
