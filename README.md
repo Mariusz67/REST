@@ -16,6 +16,7 @@ The server allows you to enter new items, download items and delete items.
 ## Technologies
 Project is created with:
 * Java 17
+* Spring Boot
 
 ## Setup
 To run this project, clone & run it locally using IntelliJ.
