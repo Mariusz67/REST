@@ -11,12 +11,17 @@ import java.util.List;
 @Scope("singleton")
 public class BazaDanychPrzedmiotow {
     private List<Przedmiot> przedmioty = new ArrayList<>();
+    private int licznikRekordow = 1;
 
     public List<Przedmiot> getPrzedmioty() {
         return przedmioty;
     }
 
-    public void addPrzedmiot (Przedmiot przedmiot) { przedmioty.add(przedmiot); }
+    public void addPrzedmiot (Przedmiot przedmiot) {
+        przedmiot.setId((licznikRekordow));
+        przedmioty.add(przedmiot);
+        licznikRekordow ++;
+    }
 
     public void deleteWszystkie(){ przedmioty.clear(); }
 
